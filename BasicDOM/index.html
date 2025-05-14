@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics of DOM</title>
+</head>
+<body>
+    <h1 id="header">Hello World!</h1>
+    <p>This is a simple HTML document to demonstrate the basics of the Document Object Model (DOM).</p>
+    <p>This is a simple HTML document to demonstrate the basics of the Document Object Model (DOM).</p>
+    <p>This is a simple HTML document to demonstrate the basics of the Document Object Model (DOM).</p>
+
+    <div class="container">
+        <h2>DOM Manipulation</h2>
+        <p id="demo">This is a paragraph.</p>
+    </div>
+
+    <div class="container">
+        <h2>DOM Manipulation</h2>
+        <p id="demo">This is a paragraph.</p>
+    </div>
+    <div class="container">
+        <h2>DOM Manipulation</h2>
+        <p id="demo">This is a paragraph.</p>
+    </div>
+
+    <script>
+        let header = document.getElementById("header");
+        header.textContent = "Welcome to the DOM World!";
+
+        let paragraphs = document.getElementsByTagName("p");
+        for (let i = 0; i < paragraphs.length; i++) {
+            paragraphs[i].style.color = "blue";
+        }
+
+        let firstContainer = document.querySelector(".container");
+        firstContainer.style.backgroundColor = "yellow";
+
+    </script>
+</body>
+</html>
