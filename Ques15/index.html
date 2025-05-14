@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic To-Do List</title>
+  </head>
+  <body>
+    <h1>Dynamic To-Do-List</h1>
+    <input type="text" id="taskInput" placeholder="Enter a new task" />
+    <button id="addTaskButton">Add Task</button>
+    <ul id="taskList"></ul>
+    <script>
+      let addTaskButton = document.getElementById("addTaskButton");
+      let taskInput = document.getElementById("taskInput");
+      let taskListElement = document.getElementById("taskList");
+
+      addTaskButton.addEventListener("click", function () {
+        let task = taskInput.value;
+        if(task === "") {
+          alert("Please enter a task.");
+          return;
+        }
+        let listItem = document.createElement("li");
+        listItem.innerHTML = `
+          ${task} <br>
+          <button class="complete-btn">Complete</button>
+          <button class="delete-btn">Delete</button>
+        `;
+        let completeButton = listItem.querySelector(".complete-btn");
+        let deleteButton = listItem.querySelector(".delete-btn");
+        completeButton.addEventListener("click", function () {
+          listItem.style.textDecoration = "line-through";
+        });
+        deleteButton.addEventListener("click", function () {
+          taskListElement.removeChild(listItem);
+        });
+        listItem.appendChild(completeButton);
+        listItem.appendChild(deleteButton);
+        taskListElement.appendChild(listItem);
+        taskInput.value = ""; // Clear the input field
+
+      });
+
+    </script>
+  </body>
+</html>
