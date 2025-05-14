@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem 13</title>
+    <style>
+      .box {
+        width: 300px;
+        height: 200px;
+        margin-top: 20px;
+        background-color: rgb(179, 219, 232);
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Text and Background Chnager</h1>
+    <label for="color">Enter the Color </label><br />
+    <input type="text" id="entercolor" placeholder="Enter color name" />
+    <button id="bgrd-btn">Chanhe Background</button>
+
+    <br /><br />
+    <label for="text">Enter the text </label><br />
+    <input type="text" id="entertext" placeholder="Enter text" />
+    <button id="text-btn">Update Text</button>
+
+    <div class="box" id="box">
+      <p>This is a text</p>
+    </div>
+    <script>
+      const box = document.getElementById("box");
+      const bgrdBtn = document.getElementById("bgrd-btn");
+      const textBtn = document.getElementById("text-btn");
+
+      function isValidColor(color) {
+        const s = new Option().style;
+        s.color = color;
+        return s.color !== "";
+      }
+      bgrdBtn.addEventListener("click", () => {
+        color = document.getElementById("entercolor").value;
+        if (color === "") {
+          alert("Please enter a color name");
+          return;
+        }
+        if (!isValidColor(color)) {
+          alert("Invalid color name");
+          return;
+        }
+
+        box.style.backgroundColor = color;
+      });
+
+      textBtn.addEventListener("click", () => {
+        text = document.getElementById("entertext").value;
+        if (text === "") {
+          alert("Please enter some text!");
+          return;
+        }
+        box.querySelector("p").innerText = text;
+      });
+    </script>
+  </body>
+</html>
